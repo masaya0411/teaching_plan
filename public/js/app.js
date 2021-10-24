@@ -2088,15 +2088,10 @@ __webpack_require__.r(__webpack_exports__);
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_chartjs__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vue-chartjs */ "./node_modules/vue-chartjs/es/index.js");
 
+var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveProp;
 /* harmony default export */ __webpack_exports__["default"] = ({
   "extends": vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["Pie"],
-  mixins: [vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactiveData],
-  props: {
-    propData: {
-      type: Array,
-      "default": null
-    }
-  },
+  mixins: [reactiveProp],
   data: function data() {
     return {
       options: {
@@ -2110,25 +2105,7 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    this.render();
-  },
-  watch: {
-    propData: function propData() {
-      this.render();
-    }
-  },
-  methods: {
-    render: function render() {
-      this.chartData = {
-        labels: ['導入', '展開', 'まとめ'],
-        datasets: [{
-          backgroundColor: ["#ffd3d3", "#fff9b4", "#6090EF"],
-          borderColor: 'transparent',
-          label: '授業',
-          data: this.propData
-        }]
-      };
-    }
+    this.renderChart(this.chartData, this.options);
   }
 });
 
@@ -2281,7 +2258,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -2300,7 +2276,7 @@ __webpack_require__.r(__webpack_exports__);
     return {
       statuses: [],
       newTaskForStatus: 0,
-      values: []
+      datacollection: null
     };
   },
   computed: {
@@ -2315,6 +2291,7 @@ __webpack_require__.r(__webpack_exports__);
   created: function created() {},
   mounted: function mounted() {
     this.statuses = JSON.parse(JSON.stringify(this.initialData));
+    this.fillData();
   },
   methods: {
     openAddTaskForm: function openAddTaskForm(statusId) {
@@ -2329,6 +2306,7 @@ __webpack_require__.r(__webpack_exports__);
       }); // 新しく作成しタスクを追加
 
       this.statuses[statusIndex].tasks.push(newTask);
+      this.fillData();
       this.closeAddTaskForm();
     },
     handleTaskMoved: function handleTaskMoved() {
@@ -2353,6 +2331,8 @@ __webpack_require__.r(__webpack_exports__);
       if (confirm('タスクを削除しますか？')) {
         axios["delete"]("/tasks/" + taskId, taskId).then(function (res) {
           _this.statuses[statusIndex].tasks.splice(taskIndex, 1);
+
+          _this.fillData();
         })["catch"](function (err) {
           console.log(err);
         });
@@ -2365,23 +2345,28 @@ __webpack_require__.r(__webpack_exports__);
         for (var i = 0; i < this.statuses[0].tasks.length; i++) {
           sum += this.statuses[0].tasks[i].time;
         }
-
-        this.values[0] = sum;
       } else if (statusSlug === 'development') {
         for (var i = 0; i < this.statuses[1].tasks.length; i++) {
           sum += this.statuses[1].tasks[i].time;
         }
-
-        this.values[1] = sum;
       } else if (statusSlug === 'summary') {
         for (var i = 0; i < this.statuses[2].tasks.length; i++) {
           sum += this.statuses[2].tasks[i].time;
         }
-
-        this.values[2] = sum;
       }
 
       return sum;
+    },
+    fillData: function fillData() {
+      this.datacollection = {
+        labels: ['導入', '展開', 'まとめ'],
+        datasets: [{
+          backgroundColor: ["#ffd3d3", "#fff9b4", "#6090EF"],
+          borderColor: 'transparent',
+          label: '授業',
+          data: [this.addStatusTime('introduction'), this.addStatusTime('development'), this.addStatusTime('summary')]
+        }]
+      };
     }
   }
 });
@@ -94200,7 +94185,7 @@ var render = function() {
     _c(
       "div",
       { staticClass: "w-75 mx-auto" },
-      [_c("chart-pie", { attrs: { propData: _vm.values } })],
+      [_c("chart-pie", { attrs: { "chart-data": _vm.datacollection } })],
       1
     )
   ])

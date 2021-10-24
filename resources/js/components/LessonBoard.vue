@@ -29,7 +29,6 @@
                                     <li class="p-task__list overflow-hidden bg-white border rounded">
                                         <i class="far fa-circle"></i>
                                         <span class="p-task__editText ml-2">{{ task.task_name }}</span>
-                                        <!-- <a href="" class="fas fa-trash-alt mx-3 float-right"></a> -->
                                         <button aria-label="Delete task"
                                                 class="float-right mx-2 text-danger u-delete-btn"
                                                 @click="onDelete(task.id, status.id)"
@@ -94,7 +93,7 @@
         </div>
     </div>
     <div class="w-75 mx-auto">
-        <chart-pie :propData="values"></chart-pie>
+        <chart-pie :chart-data="datacollection"></chart-pie>
     </div>
     </div>
 </template>
@@ -121,7 +120,7 @@ export default {
 
             newTaskForStatus: 0,
 
-            values: []
+            datacollection: null
 
         };
     },
@@ -138,6 +137,7 @@ export default {
     },
     mounted() {
         this.statuses = JSON.parse(JSON.stringify(this.initialData));
+        this.fillData();
     },
     methods: {
         openAddTaskForm(statusId) {
@@ -154,6 +154,7 @@ export default {
             // 新しく作成しタスクを追加
             this.statuses[statusIndex].tasks.push(newTask);
 
+            this.fillData();
             this.closeAddTaskForm();
         },
         handleTaskMoved() {
@@ -177,6 +178,7 @@ export default {
                     .delete("/tasks/" + taskId, taskId)
                     .then(res => {
                         this.statuses[statusIndex].tasks.splice(taskIndex, 1);
+                        this.fillData();
                     })
                     .catch(err => {
                         console.log(err);
@@ -189,20 +191,30 @@ export default {
                 for (var i = 0; i < this.statuses[0].tasks.length; i++) {
                     sum += this.statuses[0].tasks[i].time;
                 }
-                this.values[0] = sum;
             }else if(statusSlug === 'development') {
                 for (var i = 0; i < this.statuses[1].tasks.length; i++) {
                     sum += this.statuses[1].tasks[i].time;
                 }
-                this.values[1] = sum;
             }else if(statusSlug === 'summary') {
                 for (var i = 0; i < this.statuses[2].tasks.length; i++) {
                     sum += this.statuses[2].tasks[i].time;
                 }
-                this.values[2] = sum;
             }
             return sum;
-        }
+        },
+        fillData() {
+            this.datacollection = {
+                labels: ['導入', '展開', 'まとめ'],
+                datasets: [
+                    {
+                        backgroundColor: ["#ffd3d3", "#fff9b4", "#6090EF"],
+                        borderColor: 'transparent',
+                        label: '授業',
+                        data: [this.addStatusTime('introduction'), this.addStatusTime('development'), this.addStatusTime('summary')]
+                    }
+                ]
+            }
+        },
     }
 };
 </script>
