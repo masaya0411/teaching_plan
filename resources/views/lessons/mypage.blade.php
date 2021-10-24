@@ -2,15 +2,18 @@
 @section('title', 'マイページ')
 
 @section('content')
-<div class="l-main__container">
+        <div class="w-75 mx-auto mt-3">
+            <span class="h3">{{ Auth::user()->name }}　のマイページ</span>
+        </div>
+        <div class="l-main__container pt-50" style="padding-top: 80px;">
             <div class="container">   
                 <div class="row">
 
-                    <div class="col-sm-3 mb-4">
+                    <div class="col-sm-3 mb-4" style="height: 190px;">
                         <a href="" data-toggle="modal" data-target="#store" data-backdrop="true">
                             <div class="card bg-light h-100">
                                 <div class="card-body u-card_center">
-                                    <h3 class="card-title py-4" style="font-size: 25px;color: #3C4B69;">新しい授業を作成</h3>
+                                    <h3 class="card-title py-4 h3 text-dark">新しい授業を作成</h3>
                                 </div>
                             </div>
                         </a>
