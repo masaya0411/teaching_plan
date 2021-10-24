@@ -9,9 +9,10 @@ export default {
         return {
             options: {
                 responsive: true,
+                maintainAspectRatio: false,
                 legend: {
                     labels: {
-                        fontSize :28,
+                        fontSize :25,
                     }
                 }
             }

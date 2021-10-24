@@ -1,100 +1,98 @@
 <template>
     <div>
-    <div class="row">
-        <div v-for="status in statuses" :key="status.slug" class="col-sm-4 mb-4">
-            <div class="card bg-light text-dark">
-                <div class="card-header d-flex justify-content-around">
-                    <h3 class="card-title mb-0" style="font-size: 28px;">
-                        {{ status.sutatuse_name }}
-                    </h3>
-                    <h3 class="card-title mb-0 h3">
-                        {{ addStatusTime(status.slug) }} 分
-                    </h3>
-                </div>
-                <div class="card-body text-dark">
-
-                    <ul v-bind:id="status.slug">
-                        <draggable
-                            class="overflow-hidden"
-                            v-model="status.tasks"
-                            v-bind="taskDragOptions"
-                            @end="handleTaskMoved"
-                        >
-                            <transition-group tag="div">
-                                <div 
-                                    v-for="task in status.tasks" 
-                                    :key="task.id" 
-                                    class="p-task mb-2"
-                                >
-                                    <li class="p-task__list overflow-hidden bg-white border rounded">
-                                        <i class="far fa-circle"></i>
-                                        <span class="p-task__editText ml-2">{{ task.task_name }}</span>
-                                        <button aria-label="Delete task"
-                                                class="float-right mx-2 text-danger u-delete-btn"
-                                                @click="onDelete(task.id, status.id)"
-                                        >
-                                        <Trash2Icon/>
-                                        </button>
-                                        <a 
-                                        class="overflow-hidden" 
-                                        data-toggle="collapse" 
-                                        v-bind:href="'#menu' + task.id" 
-                                        v-bind:aria-controls="'#menu' + task.id" 
-                                        aria-expanded="false">
-                                            <i class="fas fa-chevron-up float-right"></i>
-                                        </a>
-                                    </li>
-                                    <ul 
-                                    v-bind:id="'menu' + task.id" 
-                                    class="collapse p-task__item" 
-                                    v-bind:data-parent="'#' + status.slug">
-                                        <li class="d-flex align-items-center">
-                                            時間：<span class="d-block text-center">
-                                                {{ task.time }}
-                                                </span>分
-                                        </li>
-                                        <li>
-                                            留意点：<p class="h5 p-2 mt-2" v-show="task.description.length" style="height: 100%;">
-                                                {{ task.description }}
-                                                </p>
-                                        </li>
-                                    </ul>
-                                </div>
-                            </transition-group>
-                        </draggable>
-                    </ul>
-
-                    <!-- AddTaskForm -->
-                    <AddTaskForm 
-                        v-if="newTaskForStatus === status.id" 
-                        :status-id="status.id"
-                        :lesson-id="status.lesson_id"
-                        v-on:task-added="handleTaskAdded" 
-                        v-on:task-canceled="closeAddTaskForm"
-                    />
-                    <!-- /AddTaskForm -->
-
-                    <button v-show="status.tasks.length" 
-                            @click="openAddTaskForm(status.id)"
-                            class="u-task-btn">追加　+</button>
-
-
-                    <div v-show="!status.tasks.length && newTaskForStatus !== status.id">
-                        <span class="text-gray h4 d-block text-center">No Task</span>
-                        <button class="u-task-btn"
-                                @click="openAddTaskForm(status.id)"
-                        >
-                        追加　+
-                        </button>
+        <div class="row">
+            <div v-for="status in statuses" :key="status.slug" class="col-sm-4 mb-4">
+                <div class="card bg-light text-dark">
+                    <div class="card-header d-flex justify-content-around">
+                        <h3 class="card-title mb-0" style="font-size: 28px;">
+                            {{ status.sutatuse_name }}
+                        </h3>
+                        <h3 class="card-title mb-0 h3">
+                            {{ addStatusTime(status.slug) }} 分
+                        </h3>
                     </div>
+                    <div class="card-body text-dark">
 
+                        <ul v-bind:id="status.slug">
+                            <draggable
+                                class="overflow-hidden"
+                                v-model="status.tasks"
+                                v-bind="taskDragOptions"
+                                @end="handleTaskMoved"
+                            >
+                                <transition-group tag="div">
+                                    <div 
+                                        v-for="task in status.tasks" 
+                                        :key="task.id" 
+                                        class="p-task mb-2"
+                                    >
+                                        <li class="p-task__list overflow-hidden bg-white border rounded">
+                                            <i class="far fa-circle"></i>
+                                            <span class="p-task__editText ml-2">{{ task.task_name }}</span>
+                                            <button aria-label="Delete task"
+                                                    class="float-right mx-2 text-danger u-delete-btn"
+                                                    @click="onDelete(task.id, status.id)"
+                                            >
+                                            <Trash2Icon/>
+                                            </button>
+                                            <a 
+                                            class="overflow-hidden" 
+                                            data-toggle="collapse" 
+                                            v-bind:href="'#menu' + task.id" 
+                                            v-bind:aria-controls="'#menu' + task.id" 
+                                            aria-expanded="false">
+                                                <i class="fas fa-chevron-up float-right"></i>
+                                            </a>
+                                        </li>
+                                        <ul 
+                                        v-bind:id="'menu' + task.id" 
+                                        class="collapse p-task__item" 
+                                        v-bind:data-parent="'#' + status.slug">
+                                            <li class="d-flex align-items-center">
+                                                時間：<span class="d-block text-center">
+                                                    {{ task.time }}
+                                                    </span>分
+                                            </li>
+                                            <li>
+                                                留意点：<p class="h5 p-2 mt-2" v-show="task.description.length" style="height: 100%;">
+                                                    {{ task.description }}
+                                                    </p>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </transition-group>
+                            </draggable>
+                        </ul>
+
+                        <!-- AddTaskForm -->
+                        <AddTaskForm 
+                            v-if="newTaskForStatus === status.id" 
+                            :status-id="status.id"
+                            :lesson-id="status.lesson_id"
+                            v-on:task-added="handleTaskAdded" 
+                            v-on:task-canceled="closeAddTaskForm"
+                        />
+                        <!-- /AddTaskForm -->
+
+                        <button v-show="status.tasks.length" 
+                                @click="openAddTaskForm(status.id)"
+                                class="u-task-btn">追加　+</button>
+
+
+                        <div v-show="!status.tasks.length && newTaskForStatus !== status.id">
+                            <span class="text-gray h4 d-block text-center">No Task</span>
+                            <button class="u-task-btn"
+                                    @click="openAddTaskForm(status.id)"
+                            >
+                            追加　+
+                            </button>
+                        </div>
+
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="w-75 mx-auto">
         <chart-pie :chart-data="datacollection"></chart-pie>
-    </div>
     </div>
 </template>
 

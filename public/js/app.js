@@ -2096,9 +2096,10 @@ var reactiveProp = vue_chartjs__WEBPACK_IMPORTED_MODULE_0__["mixins"].reactivePr
     return {
       options: {
         responsive: true,
+        maintainAspectRatio: false,
         legend: {
           labels: {
-            fontSize: 28
+            fontSize: 25
           }
         }
       }
@@ -2158,8 +2159,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuedraggable__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(vuedraggable__WEBPACK_IMPORTED_MODULE_1__);
 /* harmony import */ var vue_feather_icons__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vue-feather-icons */ "./node_modules/vue-feather-icons/dist/vue-feather-icons.es.js");
 /* harmony import */ var _ChartPie__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ChartPie */ "./resources/js/components/ChartPie.vue");
-//
-//
 //
 //
 //
@@ -93893,302 +93892,306 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c(
-      "div",
-      { staticClass: "row" },
-      _vm._l(_vm.statuses, function(status) {
-        return _c("div", { key: status.slug, staticClass: "col-sm-4 mb-4" }, [
-          _c("div", { staticClass: "card bg-light text-dark" }, [
-            _c(
-              "div",
-              { staticClass: "card-header d-flex justify-content-around" },
-              [
-                _c(
-                  "h3",
-                  {
-                    staticClass: "card-title mb-0",
-                    staticStyle: { "font-size": "28px" }
-                  },
-                  [
+  return _c(
+    "div",
+    [
+      _c(
+        "div",
+        { staticClass: "row" },
+        _vm._l(_vm.statuses, function(status) {
+          return _c("div", { key: status.slug, staticClass: "col-sm-4 mb-4" }, [
+            _c("div", { staticClass: "card bg-light text-dark" }, [
+              _c(
+                "div",
+                { staticClass: "card-header d-flex justify-content-around" },
+                [
+                  _c(
+                    "h3",
+                    {
+                      staticClass: "card-title mb-0",
+                      staticStyle: { "font-size": "28px" }
+                    },
+                    [
+                      _vm._v(
+                        "\n                        " +
+                          _vm._s(status.sutatuse_name) +
+                          "\n                    "
+                      )
+                    ]
+                  ),
+                  _vm._v(" "),
+                  _c("h3", { staticClass: "card-title mb-0 h3" }, [
                     _vm._v(
-                      "\n                    " +
-                        _vm._s(status.sutatuse_name) +
-                        "\n                "
+                      "\n                        " +
+                        _vm._s(_vm.addStatusTime(status.slug)) +
+                        " 分\n                    "
                     )
-                  ]
-                ),
-                _vm._v(" "),
-                _c("h3", { staticClass: "card-title mb-0 h3" }, [
-                  _vm._v(
-                    "\n                    " +
-                      _vm._s(_vm.addStatusTime(status.slug)) +
-                      " 分\n                "
-                  )
-                ])
-              ]
-            ),
-            _vm._v(" "),
-            _c(
-              "div",
-              { staticClass: "card-body text-dark" },
-              [
-                _c(
-                  "ul",
-                  { attrs: { id: status.slug } },
-                  [
-                    _c(
-                      "draggable",
-                      _vm._b(
-                        {
-                          staticClass: "overflow-hidden",
-                          on: { end: _vm.handleTaskMoved },
-                          model: {
-                            value: status.tasks,
-                            callback: function($$v) {
-                              _vm.$set(status, "tasks", $$v)
-                            },
-                            expression: "status.tasks"
-                          }
-                        },
+                  ])
+                ]
+              ),
+              _vm._v(" "),
+              _c(
+                "div",
+                { staticClass: "card-body text-dark" },
+                [
+                  _c(
+                    "ul",
+                    { attrs: { id: status.slug } },
+                    [
+                      _c(
                         "draggable",
-                        _vm.taskDragOptions,
-                        false
-                      ),
-                      [
-                        _c(
-                          "transition-group",
-                          { attrs: { tag: "div" } },
-                          _vm._l(status.tasks, function(task) {
-                            return _c(
-                              "div",
-                              { key: task.id, staticClass: "p-task mb-2" },
-                              [
-                                _c(
-                                  "li",
-                                  {
-                                    staticClass:
-                                      "p-task__list overflow-hidden bg-white border rounded"
-                                  },
-                                  [
-                                    _c("i", { staticClass: "far fa-circle" }),
-                                    _vm._v(" "),
-                                    _c(
-                                      "span",
-                                      { staticClass: "p-task__editText ml-2" },
-                                      [_vm._v(_vm._s(task.task_name))]
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "button",
-                                      {
-                                        staticClass:
-                                          "float-right mx-2 text-danger u-delete-btn",
-                                        attrs: { "aria-label": "Delete task" },
-                                        on: {
-                                          click: function($event) {
-                                            return _vm.onDelete(
-                                              task.id,
-                                              status.id
-                                            )
-                                          }
-                                        }
-                                      },
-                                      [_c("Trash2Icon")],
-                                      1
-                                    ),
-                                    _vm._v(" "),
-                                    _c(
-                                      "a",
-                                      {
-                                        staticClass: "overflow-hidden",
-                                        attrs: {
-                                          "data-toggle": "collapse",
-                                          href: "#menu" + task.id,
-                                          "aria-controls": "#menu" + task.id,
-                                          "aria-expanded": "false"
-                                        }
-                                      },
-                                      [
-                                        _c("i", {
-                                          staticClass:
-                                            "fas fa-chevron-up float-right"
-                                        })
-                                      ]
-                                    )
-                                  ]
-                                ),
-                                _vm._v(" "),
-                                _c(
-                                  "ul",
-                                  {
-                                    staticClass: "collapse p-task__item",
-                                    attrs: {
-                                      id: "menu" + task.id,
-                                      "data-parent": "#" + status.slug
-                                    }
-                                  },
-                                  [
-                                    _c(
-                                      "li",
-                                      {
-                                        staticClass: "d-flex align-items-center"
-                                      },
-                                      [
-                                        _vm._v(
-                                          "\n                                        時間："
-                                        ),
-                                        _c(
-                                          "span",
-                                          {
-                                            staticClass: "d-block text-center"
-                                          },
-                                          [
-                                            _vm._v(
-                                              "\n                                            " +
-                                                _vm._s(task.time) +
-                                                "\n                                            "
-                                            )
-                                          ]
-                                        ),
-                                        _vm._v(
-                                          "分\n                                    "
-                                        )
-                                      ]
-                                    ),
-                                    _vm._v(" "),
-                                    _c("li", [
-                                      _vm._v(
-                                        "\n                                        留意点："
-                                      ),
+                        _vm._b(
+                          {
+                            staticClass: "overflow-hidden",
+                            on: { end: _vm.handleTaskMoved },
+                            model: {
+                              value: status.tasks,
+                              callback: function($$v) {
+                                _vm.$set(status, "tasks", $$v)
+                              },
+                              expression: "status.tasks"
+                            }
+                          },
+                          "draggable",
+                          _vm.taskDragOptions,
+                          false
+                        ),
+                        [
+                          _c(
+                            "transition-group",
+                            { attrs: { tag: "div" } },
+                            _vm._l(status.tasks, function(task) {
+                              return _c(
+                                "div",
+                                { key: task.id, staticClass: "p-task mb-2" },
+                                [
+                                  _c(
+                                    "li",
+                                    {
+                                      staticClass:
+                                        "p-task__list overflow-hidden bg-white border rounded"
+                                    },
+                                    [
+                                      _c("i", { staticClass: "far fa-circle" }),
+                                      _vm._v(" "),
                                       _c(
-                                        "p",
+                                        "span",
                                         {
-                                          directives: [
-                                            {
-                                              name: "show",
-                                              rawName: "v-show",
-                                              value: task.description.length,
-                                              expression:
-                                                "task.description.length"
+                                          staticClass: "p-task__editText ml-2"
+                                        },
+                                        [_vm._v(_vm._s(task.task_name))]
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "button",
+                                        {
+                                          staticClass:
+                                            "float-right mx-2 text-danger u-delete-btn",
+                                          attrs: {
+                                            "aria-label": "Delete task"
+                                          },
+                                          on: {
+                                            click: function($event) {
+                                              return _vm.onDelete(
+                                                task.id,
+                                                status.id
+                                              )
                                             }
-                                          ],
-                                          staticClass: "h5 p-2 mt-2",
-                                          staticStyle: { height: "100%" }
+                                          }
+                                        },
+                                        [_c("Trash2Icon")],
+                                        1
+                                      ),
+                                      _vm._v(" "),
+                                      _c(
+                                        "a",
+                                        {
+                                          staticClass: "overflow-hidden",
+                                          attrs: {
+                                            "data-toggle": "collapse",
+                                            href: "#menu" + task.id,
+                                            "aria-controls": "#menu" + task.id,
+                                            "aria-expanded": "false"
+                                          }
+                                        },
+                                        [
+                                          _c("i", {
+                                            staticClass:
+                                              "fas fa-chevron-up float-right"
+                                          })
+                                        ]
+                                      )
+                                    ]
+                                  ),
+                                  _vm._v(" "),
+                                  _c(
+                                    "ul",
+                                    {
+                                      staticClass: "collapse p-task__item",
+                                      attrs: {
+                                        id: "menu" + task.id,
+                                        "data-parent": "#" + status.slug
+                                      }
+                                    },
+                                    [
+                                      _c(
+                                        "li",
+                                        {
+                                          staticClass:
+                                            "d-flex align-items-center"
                                         },
                                         [
                                           _vm._v(
-                                            "\n                                            " +
-                                              _vm._s(task.description) +
-                                              "\n                                            "
+                                            "\n                                            時間："
+                                          ),
+                                          _c(
+                                            "span",
+                                            {
+                                              staticClass: "d-block text-center"
+                                            },
+                                            [
+                                              _vm._v(
+                                                "\n                                                " +
+                                                  _vm._s(task.time) +
+                                                  "\n                                                "
+                                              )
+                                            ]
+                                          ),
+                                          _vm._v(
+                                            "分\n                                        "
                                           )
                                         ]
-                                      )
-                                    ])
-                                  ]
-                                )
-                              ]
-                            )
-                          }),
-                          0
-                        )
-                      ],
-                      1
-                    )
-                  ],
-                  1
-                ),
-                _vm._v(" "),
-                _vm.newTaskForStatus === status.id
-                  ? _c("AddTaskForm", {
-                      attrs: {
-                        "status-id": status.id,
-                        "lesson-id": status.lesson_id
-                      },
-                      on: {
-                        "task-added": _vm.handleTaskAdded,
-                        "task-canceled": _vm.closeAddTaskForm
-                      }
-                    })
-                  : _vm._e(),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value: status.tasks.length,
-                        expression: "status.tasks.length"
-                      }
+                                      ),
+                                      _vm._v(" "),
+                                      _c("li", [
+                                        _vm._v(
+                                          "\n                                            留意点："
+                                        ),
+                                        _c(
+                                          "p",
+                                          {
+                                            directives: [
+                                              {
+                                                name: "show",
+                                                rawName: "v-show",
+                                                value: task.description.length,
+                                                expression:
+                                                  "task.description.length"
+                                              }
+                                            ],
+                                            staticClass: "h5 p-2 mt-2",
+                                            staticStyle: { height: "100%" }
+                                          },
+                                          [
+                                            _vm._v(
+                                              "\n                                                " +
+                                                _vm._s(task.description) +
+                                                "\n                                                "
+                                            )
+                                          ]
+                                        )
+                                      ])
+                                    ]
+                                  )
+                                ]
+                              )
+                            }),
+                            0
+                          )
+                        ],
+                        1
+                      )
                     ],
-                    staticClass: "u-task-btn",
-                    on: {
-                      click: function($event) {
-                        return _vm.openAddTaskForm(status.id)
-                      }
-                    }
-                  },
-                  [_vm._v("追加　+")]
-                ),
-                _vm._v(" "),
-                _c(
-                  "div",
-                  {
-                    directives: [
-                      {
-                        name: "show",
-                        rawName: "v-show",
-                        value:
-                          !status.tasks.length &&
-                          _vm.newTaskForStatus !== status.id,
-                        expression:
-                          "!status.tasks.length && newTaskForStatus !== status.id"
-                      }
-                    ]
-                  },
-                  [
-                    _c(
-                      "span",
-                      { staticClass: "text-gray h4 d-block text-center" },
-                      [_vm._v("No Task")]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "u-task-btn",
+                    1
+                  ),
+                  _vm._v(" "),
+                  _vm.newTaskForStatus === status.id
+                    ? _c("AddTaskForm", {
+                        attrs: {
+                          "status-id": status.id,
+                          "lesson-id": status.lesson_id
+                        },
                         on: {
-                          click: function($event) {
-                            return _vm.openAddTaskForm(status.id)
-                          }
+                          "task-added": _vm.handleTaskAdded,
+                          "task-canceled": _vm.closeAddTaskForm
                         }
-                      },
-                      [
-                        _vm._v(
-                          "\n                    追加　+\n                    "
-                        )
+                      })
+                    : _vm._e(),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value: status.tasks.length,
+                          expression: "status.tasks.length"
+                        }
+                      ],
+                      staticClass: "u-task-btn",
+                      on: {
+                        click: function($event) {
+                          return _vm.openAddTaskForm(status.id)
+                        }
+                      }
+                    },
+                    [_vm._v("追加　+")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "div",
+                    {
+                      directives: [
+                        {
+                          name: "show",
+                          rawName: "v-show",
+                          value:
+                            !status.tasks.length &&
+                            _vm.newTaskForStatus !== status.id,
+                          expression:
+                            "!status.tasks.length && newTaskForStatus !== status.id"
+                        }
                       ]
-                    )
-                  ]
-                )
-              ],
-              1
-            )
+                    },
+                    [
+                      _c(
+                        "span",
+                        { staticClass: "text-gray h4 d-block text-center" },
+                        [_vm._v("No Task")]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "button",
+                        {
+                          staticClass: "u-task-btn",
+                          on: {
+                            click: function($event) {
+                              return _vm.openAddTaskForm(status.id)
+                            }
+                          }
+                        },
+                        [
+                          _vm._v(
+                            "\n                        追加　+\n                        "
+                          )
+                        ]
+                      )
+                    ]
+                  )
+                ],
+                1
+              )
+            ])
           ])
-        ])
-      }),
-      0
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      { staticClass: "w-75 mx-auto" },
-      [_c("chart-pie", { attrs: { "chart-data": _vm.datacollection } })],
-      1
-    )
-  ])
+        }),
+        0
+      ),
+      _vm._v(" "),
+      _c("chart-pie", { attrs: { "chart-data": _vm.datacollection } })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
