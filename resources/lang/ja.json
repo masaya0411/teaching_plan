@@ -6,5 +6,7 @@
     "Forgot Your Password?" :"パスワードをお忘れの方",
     "Register" : "ユーザー登録",
     "Name" : "名前",
-    "Confirm Password" : "パスワード再入力"
+    "Confirm Password" : "パスワード再入力",
+    "Reset Password" : "パスワードリセット",
+    "Send Password Reset Link" : "リンクを送信"
 }

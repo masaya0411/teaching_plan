@@ -42,7 +42,7 @@
                         </li>
                     @else
                         <li class="l-header__item js-close-menu-item">
-                            <a class="l-header__link" href="{{ route('lessons.mypage') }}">HOME</a>
+                            <a class="l-header__link" href="{{ route('lessons.mypage') }}">マイページ</a>
                         </li>
                         <li class="l-header__item js-close-menu-item">
                             <a class="l-header__link" href="{{ route('logout') }}"onclick="event.preventDefault();
