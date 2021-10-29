@@ -11,5 +11,4 @@ $(function () {
         $('.js-toggle-sp-menu').toggleClass('active');
         $('.js-toggle-sp-menu-target').toggleClass('active');
     });
-    
 });

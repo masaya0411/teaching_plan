@@ -93972,7 +93972,9 @@ var render = function() {
                                         "p-task__list overflow-hidden bg-white border rounded"
                                     },
                                     [
-                                      _c("i", { staticClass: "far fa-circle" }),
+                                      _c("i", {
+                                        staticClass: "far fa-circle my-2"
+                                      }),
                                       _vm._v(" "),
                                       _c(
                                         "span",
@@ -93986,7 +93988,7 @@ var render = function() {
                                         "button",
                                         {
                                           staticClass:
-                                            "float-right mx-2 text-danger u-delete-btn",
+                                            "float-right mx-2 my-2 text-danger u-delete-btn",
                                           attrs: {
                                             "aria-label": "Delete task"
                                           },
@@ -94017,7 +94019,7 @@ var render = function() {
                                         [
                                           _c("i", {
                                             staticClass:
-                                              "fas fa-chevron-up float-right"
+                                              "fas fa-chevron-up mx-2 my-2 float-right"
                                           })
                                         ]
                                       )

@@ -27,10 +27,10 @@
                                         class="p-task mb-2"
                                     >
                                         <li class="p-task__list overflow-hidden bg-white border rounded">
-                                            <i class="far fa-circle"></i>
+                                            <i class="far fa-circle my-2"></i>
                                             <span class="p-task__editText ml-2">{{ task.task_name }}</span>
                                             <button aria-label="Delete task"
-                                                    class="float-right mx-2 text-danger u-delete-btn"
+                                                    class="float-right mx-2 my-2 text-danger u-delete-btn"
                                                     @click="onDelete(task.id, status.id)"
                                             >
                                             <Trash2Icon/>
@@ -41,7 +41,7 @@
                                             v-bind:href="'#menu' + task.id" 
                                             v-bind:aria-controls="'#menu' + task.id" 
                                             aria-expanded="false">
-                                                <i class="fas fa-chevron-up float-right"></i>
+                                                <i class="fas fa-chevron-up mx-2 my-2 float-right"></i>
                                             </a>
                                         </li>
                                         <ul 

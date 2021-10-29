@@ -3,7 +3,7 @@
 @section('content')
     <div class="l-main__container p-top u-padding">
         <div class="p-top__wrap">
-            <h2 class="p-top__title">Teaching</h2><br><h2 class="p-top__title">Plan</h2>
+            <h2 class="p-top__title mr-3">Teaching</h2><br><h2 class="p-top__title">Plan</h2>
             <p class="p-top__parag">毎日忙しい先生のための<br>授業計画作成サービス</p>
             <button class="c-btn">
                 @if(Auth::check())
