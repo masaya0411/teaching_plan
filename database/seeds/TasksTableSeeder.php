@@ -16,7 +16,7 @@ class TasksTableSeeder extends Seeder
         DB::table('tasks')->insert([
             'task_name' => '出欠確認',
             'time' => 3,
-            'description' => '',
+            'description' => '怪我予防のためにしっかりと動かすよう伝える。',
             'order' => 1,
             'lesson_id' => 1,
             'status_id' => 4,
