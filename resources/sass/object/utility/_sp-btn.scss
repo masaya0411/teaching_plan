@@ -1,0 +1,7 @@
+.u-sp-btn {
+    display: none;
+    @include mq() {
+        display: block;
+        margin: 0 auto;
+    }
+}

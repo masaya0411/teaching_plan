@@ -66,13 +66,13 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
     box-sizing: border-box;
     position: fixed;
     z-index: 1; }
-    @media screen and (max-width: 414px) {
+    @media screen and (max-width: 768px) {
       .l-header {
         height: 60px; } }
     .l-header__title {
       font-size: 30px;
       margin-left: 20px; }
-      @media screen and (max-width: 414px) {
+      @media screen and (max-width: 768px) {
         .l-header__title {
           font-size: 25px;
           margin-left: 0; } }
@@ -84,7 +84,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
       width: 40px;
       height: 32px;
       z-index: 3; }
-      @media screen and (max-width: 414px) {
+      @media screen and (max-width: 768px) {
         .l-header__menuTrigger {
           display: inline-block; } }
       .l-header__menuTrigger span {
@@ -115,7 +115,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
       padding-right: 70px;
       font-size: 18px;
       box-sizing: border-box; }
-      @media screen and (max-width: 414px) {
+      @media screen and (max-width: 768px) {
         .l-header__nav {
           display: block;
           position: absolute;
@@ -136,7 +136,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
       .l-header__nav .l-header__list {
         display: flex;
         justify-content: space-between; }
-        @media screen and (max-width: 414px) {
+        @media screen and (max-width: 768px) {
           .l-header__nav .l-header__list {
             color: #000;
             display: block; } }
@@ -145,7 +145,7 @@ html, body, div, span, applet, object, iframe, h1, h2, h3, h4, h5, h6, p, blockq
           .l-header__nav .l-header__list .l-header__item .l-header__link {
             display: block;
             padding: 0 15px; }
-            @media screen and (max-width: 414px) {
+            @media screen and (max-width: 768px) {
               .l-header__nav .l-header__list .l-header__item .l-header__link {
                 color: #525354;
                 font-size: 25px; } }

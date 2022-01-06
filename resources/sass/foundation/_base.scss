@@ -1,0 +1,21 @@
+html,body {
+    width: 100%;
+    font-family: $font-family;
+    color: $font-color;
+}
+a {
+    color: $font-color;
+    text-decoration: none;
+    transition: .3s;
+  }
+  a:hover {
+    color: #fff;
+    transition: .3s;
+    text-decoration: none;
+  }
+  
+  img {
+    width: 100%;
+    vertical-align: bottom;
+  }
+  

@@ -1,0 +1,118 @@
+.l-header {
+    height: 85px;
+    width: 100%;
+    background: $sub-color1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 15px;
+    padding-right: 15px;
+    box-sizing: border-box;
+    position: fixed;
+    z-index: 1;
+    @include mq() {
+        height: 60px;
+    }
+    &__title {
+        font-size: $font-size_xxl;
+        margin-left: $space_xl;
+        @include mq() {
+            font-size: $font-size_xl;
+            margin-left: 0;
+        }
+    }
+    // ====================
+    // ハンバーガーメニュー
+    // ====================
+    &__menuTrigger {
+        display: none;
+        transition: all .4s;
+        box-sizing: border-box;
+        position: relative;
+        width: 40px;
+        height: 32px;
+        z-index: 3;
+        @include mq() {
+            display: inline-block;
+        }
+        span {
+            display: inline-block;
+            transition: all .4s;
+            box-sizing: border-box;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background-color: #000;
+            border-radius: 4px;
+            &:nth-of-type(1) {
+                top: 0;
+            }
+            &:nth-of-type(2) {
+                top: 14px;
+            }
+            &:nth-of-type(3) {
+                bottom: 0;
+            }
+        }
+        &.active span {
+            &:nth-of-type(1) {
+                transform: translateY(12px) rotate(-45deg);
+            }
+            &:nth-of-type(2) {
+                opacity: 0;
+            }
+            &:nth-of-type(3) {
+                transform: translateY(-15px) rotate(45deg);
+            }
+        }
+    }
+    &__nav {
+        display: block;
+        line-height: 85px;
+        padding-right: 70px;
+        font-size: $font-size_l;
+        box-sizing: border-box;
+        @include mq() {
+            display: block;
+            position: absolute;
+            top: 0;
+            right: -100%;
+            background: rgba(255, 255, 255, .85);
+            width: 100%;
+            height: 100vh;
+            padding-top: 50px;
+            padding-right: 0;
+            transition: .5s;
+            text-align: center;
+            &.active {
+                display: block;
+                transition: .5s;
+                transform: translateX(-100%);
+                z-index: 2;
+            }
+        }
+        .l-header__list {
+            display: flex;
+            justify-content: space-between;
+            @include mq() {
+                color: #000;
+                display: block;
+            }
+            .l-header__item {
+                margin-right: $space_xxl;
+                .l-header__link {
+                    display: block;
+                    padding: 0 15px;
+                    @include mq() {
+                        color: #525354;
+                        font-size: 25px;
+                    }
+                }
+                .l-header__link:hover {
+                    background: rgb(94, 136, 115);
+                }
+            }
+        }
+    }
+}

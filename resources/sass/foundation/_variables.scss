@@ -1,0 +1,40 @@
+$site-width: 100%;
+
+$main-color: #87B278;
+$sub-color1: #50775D;
+$sub-color2: #EBECF0;
+
+$font-color: #fff;
+
+$font-family: 'Yuanti TC';
+
+$font-size_s: 12px;
+$font-size_m: 14px;
+$font-size_default: 16px;
+$font-size_l: 18px;
+$font-size_xl: 25px;
+$font-size_xxl: 30px;
+$font-size_3l: 80px;
+
+$space_s: 5px;
+$space_m: 10px;
+$space_l: 15px;
+$space_xl: 20px;
+$space_xxl: 30px;
+$space_3l: 40px;
+
+$breakpoints: (
+    'sm': 'screen and (max-width: 414px)',
+    'md': 'screen and (max-width: 768px)',
+    'lg': 'screen and (max-width: 1000px)',
+    'xl': 'screen and (max-width: 1200px)'
+) !default;
+
+// ==============================
+// mixin
+// ==============================
+@mixin mq($breakpoint: sm) {
+    @media #{map-get($breakpoints, $breakpoint)} {
+        @content;
+    }
+}

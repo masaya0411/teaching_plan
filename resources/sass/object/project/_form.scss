@@ -1,0 +1,13 @@
+.p-form {
+    padding: 20px;
+    background: #FAFBFC;
+    &__label {
+        color: #707070;
+        font-size: 20px;
+        margin-bottom: 10px;
+        display: block;
+    }
+    &__btn {
+        margin: 0;
+    }
+}

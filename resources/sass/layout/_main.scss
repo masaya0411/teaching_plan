@@ -1,0 +1,21 @@
+.l-main {
+    // background: linear-gradient(-5deg, $sub-color2 50%, $main-color 50%);
+    background: $main-color;
+    width: 100%;
+    min-height: 100vh;
+    z-index: 0;
+    @include mq() {
+        min-height: 130vh;
+    }
+    &__container {
+        width: 90%;
+        margin: 0 auto;
+        padding-top: 150px;
+        display: flex;
+        justify-content: space-between;
+        @include mq() {
+            display: block;
+            padding-top: 100px;
+        }
+    }
+}

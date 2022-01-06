@@ -1,0 +1,60 @@
+.p-top {
+    &__wrap {
+        width: 60%;
+        @include mq() {
+            text-align: center;
+            width: 100%;
+        }
+        button {
+            @include mq() {
+                display: none;
+            }
+        }
+        br {
+            display: none;
+            @include mq() {
+                display: block;
+            }
+        }
+    }
+    &__title {
+        font-size: 4rem;
+        border-bottom: 3px solid #fff;
+        display: inline-block;
+    }
+    &__parag {
+        font-size: $font-size_xxl;
+        margin-top: 30px;
+        margin-bottom: 100px;
+        br {
+            display: none;
+            @include mq() {
+                display: block;
+            }
+        }
+        @include mq() {
+            line-height: 1.5;
+            margin-bottom: 10px;
+            text-align: center;
+            font-size: $font-size_xl;
+        }
+    }
+    &__img-wrap {
+        width: 40%;
+        height: 100%;
+        @include mq() {
+            width: 100%;
+        }
+        .p-top__img {
+            width: 100%;
+            display: block;
+            height: 100%;
+            margin-top: 120px;
+            @include mq() {
+                margin-top: 50px;
+                margin-bottom: 30px;
+            }
+        }
+    }
+
+}

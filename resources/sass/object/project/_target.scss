@@ -1,0 +1,21 @@
+.p-target {
+    width: 65%;
+    margin: 20px auto;
+    padding: 15px 20px;
+    background: $main-color;
+    border: rgb(222, 241, 53) 5px solid;
+    box-sizing: border-box;
+    @include mq() {
+        width: 90%;
+        padding: 10px 15px;
+    }
+    &__title {
+        font-size: 30px;
+        font-weight: bold;
+        color: #fff;
+        margin-top: 10px;
+        margin-bottom: 10px;
+        text-align: center;
+        line-height: 1.2;
+    }
+}

@@ -1,0 +1,19 @@
+.c-btn {
+    background: #F8B549;
+    padding: 20px 40px;
+    border: none;
+    font-size: $font-size_xl;
+    // margin-top: 60px;
+    margin-left: 40px;
+    margin-bottom: 50px;
+    border-radius: 50px;
+    border-bottom: 5px solid #a7844c;
+    transition: .2s;
+    box-sizing: border-box;
+}
+.c-btn:hover {
+    margin-top: 3px;
+    border-bottom: 2px solid #a7844c;
+    transition: .2s;
+    cursor: pointer;
+}

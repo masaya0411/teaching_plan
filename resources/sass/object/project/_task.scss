@@ -1,0 +1,42 @@
+.p-task {
+    border: #707070 1px solid;
+    border-radius: 5px;
+    &__list { 
+        padding: 5px;
+        .far, .fas{
+            font-size: 25px;
+            color: #707070;
+            // box-sizing: border-box;
+            width: 8%;
+        }
+        .fa-trash-alt {
+            color: #D53030;
+        }
+        .fa-trash-alt:hover {
+            color: #7a7a7a;
+        }
+        a[aria-expanded=true] > i{
+            -webkit-transform: rotate(180deg);
+            -ms-transform: rotate(180deg);
+            transform: rotate(180deg);
+            transition-duration: 0.3s;        
+        }
+        a[aria-expanded=false] > i{
+            transition-duration: 0.3s;        
+        }
+        .p-task__editText {
+            font-size: 25px;
+            width: 60%;
+            padding: 5px 10px;
+            border: none;
+        }
+    }
+    &__item {
+        li {
+            font-size: 20px;
+            color: #707070;
+            padding: 5px;
+            margin-bottom: 10px;
+        }
+    }
+}
