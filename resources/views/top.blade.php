@@ -1,4 +1,4 @@
-@extends('layouts.header')
+@extends('layouts.template')
 @section('title', 'TOP')
 @section('content')
     <div class="l-main__container p-top u-padding">
