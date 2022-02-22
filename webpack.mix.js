@@ -1,4 +1,5 @@
 const mix = require('laravel-mix');
+const glob = require('glob');
 
 /*
  |--------------------------------------------------------------------------
@@ -12,4 +13,23 @@ const mix = require('laravel-mix');
  */
 
 mix.js('resources/js/app.js', 'public/js')
-    .sass('resources/sass/app.scss', 'public/css');
+    .js('resources/js/menu.js', 'public/js')
+    .js('resources/js/post.js', 'public/js')
+
+glob.sync('resources/sass/*.scss').map(function(file) {
+    mix.sass(file, 'public/css')
+        .options({
+        processCssUrls: false
+        });
+    });
+
+mix.webpackConfig({
+    module: {
+        rules: [
+        { // Allow .scss files imported glob
+            test: /\.scss/,
+            loader: 'import-glob-loader'
+        }
+        ]
+    }
+})

@@ -158,6 +158,7 @@ export default {
         handleTaskMoved() {
             axios.put("/tasks/sync", {columns: this.statuses})
                 .then(res => {
+                    this.fillData();
                     console.log(res.data);
                 })
                 .catch(err => {
