@@ -410,6 +410,10 @@ img {
   margin-right: 15px;
 }
 
+.u-padding-top {
+  padding-top: 85px;
+}
+
 .u-sp-btn {
   display: none;
 }
