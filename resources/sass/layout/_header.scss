@@ -92,28 +92,28 @@
                 z-index: 2;
             }
         }
-        &__list {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 16px;
-            @include mq() {
-                color: #000;
-                display: block;
-            }
-        }
-        &__item {
-            margin-right: $space_xxl;
-            &:hover {
-                background: rgb(94, 136, 115);
-            }
-        }
-        &__link {
+    }
+    &__list {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 16px;
+        @include mq() {
+            color: #000;
             display: block;
-            padding: 0 15px;
-            @include mq() {
-                color: #525354;
-                font-size: 25px;
-            }
+        }
+    }
+    &__item {
+        margin-right: $space_xxl;
+        &:hover {
+            background: rgb(94, 136, 115);
+        }
+    }
+    &__link {
+        display: block;
+        padding: 0 15px;
+        @include mq() {
+            color: #525354;
+            font-size: 25px;
         }
     }
 }

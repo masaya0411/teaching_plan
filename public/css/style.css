@@ -165,29 +165,29 @@ img {
     z-index: 2;
   }
 }
-.l-header__nav__list {
+.l-header__list {
   display: flex;
   justify-content: space-between;
   margin-top: 16px;
 }
 @media screen and (max-width: 414px) {
-  .l-header__nav__list {
+  .l-header__list {
     color: #000;
     display: block;
   }
 }
-.l-header__nav__item {
+.l-header__item {
   margin-right: 30px;
 }
-.l-header__nav__item:hover {
+.l-header__item:hover {
   background: #5e8873;
 }
-.l-header__nav__link {
+.l-header__link {
   display: block;
   padding: 0 15px;
 }
 @media screen and (max-width: 414px) {
-  .l-header__nav__link {
+  .l-header__link {
     color: #525354;
     font-size: 25px;
   }
