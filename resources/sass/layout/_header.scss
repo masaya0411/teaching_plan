@@ -92,26 +92,27 @@
                 z-index: 2;
             }
         }
-        .l-header__list {
+        &__list {
             display: flex;
             justify-content: space-between;
+            margin-top: 16px;
             @include mq() {
                 color: #000;
                 display: block;
             }
-            .l-header__item {
-                margin-right: $space_xxl;
-                .l-header__link {
-                    display: block;
-                    padding: 0 15px;
-                    @include mq() {
-                        color: #525354;
-                        font-size: 25px;
-                    }
-                }
-                .l-header__link:hover {
-                    background: rgb(94, 136, 115);
-                }
+        }
+        &__item {
+            margin-right: $space_xxl;
+            &:hover {
+                background: rgb(94, 136, 115);
+            }
+        }
+        &__link {
+            display: block;
+            padding: 0 15px;
+            @include mq() {
+                color: #525354;
+                font-size: 25px;
             }
         }
     }
