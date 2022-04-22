@@ -1,3 +1,6 @@
 .u-padding-top {
     padding-top: 85px;
+    @include mq() {
+        padding-top: 60px;
+    }
 }
