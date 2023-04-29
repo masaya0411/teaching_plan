@@ -5,3 +5,10 @@
         margin: 0 auto;
     }
 }
+
+.u-sp-br {
+    display: none;
+    @include mq($breakpoint: sm) {
+        display: block;
+    }
+}

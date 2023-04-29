@@ -3,7 +3,9 @@
 
 @section('content')
 <div class="w-75 mx-auto my-2">
-    <span class="h3">{{ date('Y年 m月 d日', strtotime($lesson->date)) }}　{{ $lesson->period }}限　　　　{{ $lesson->title }}</span>
+    <span class="h3">{{ date('Y/m/d', strtotime($lesson->date)) }}</span>
+    <span class="h3 u-margin-left u-margin-right">{{ $lesson->period }}限</span><br class="u-sp-br">
+    <span class="h3">{{ $lesson->title }}</span>
 </div>
 <div class="p-target">
             <h2 class="p-target__title">{{ $lesson->goal }}</h2>

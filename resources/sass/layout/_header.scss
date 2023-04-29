@@ -16,7 +16,7 @@
     &__title {
         font-size: $font-size_xxl;
         margin-left: $space_xl;
-        @include mq() {
+        @include mq($breakpoint: md) {
             font-size: $font-size_xl;
             margin-left: 0;
         }
@@ -32,7 +32,7 @@
         width: 40px;
         height: 32px;
         z-index: 3;
-        @include mq() {
+        @include mq($breakpoint: md) {
             display: inline-block;
         }
         span {
@@ -73,7 +73,7 @@
         padding-right: 70px;
         font-size: $font-size_l;
         box-sizing: border-box;
-        @include mq() {
+        @include mq($breakpoint: md) {
             display: block;
             position: absolute;
             top: 0;
@@ -97,7 +97,7 @@
         display: flex;
         justify-content: space-between;
         // margin-top: 16px;
-        @include mq() {
+        @include mq($breakpoint: md) {
             color: #000;
             display: block;
         }
@@ -111,7 +111,7 @@
     &__link {
         display: block;
         padding: 0 15px;
-        @include mq() {
+        @include mq($breakpoint: md) {
             color: #525354;
             font-size: 25px;
         }

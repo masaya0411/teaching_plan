@@ -16,7 +16,7 @@ mix.js('resources/js/app.js', 'public/js')
     .js('resources/js/menu.js', 'public/js')
     .js('resources/js/post.js', 'public/js')
 
-glob.sync('resources/sass/*.scss').map(function(file) {
+glob.sync('resources/sass/style.scss').map(function(file) {
     mix.sass(file, 'public/css')
         .options({
         processCssUrls: false
